@@ -15,7 +15,7 @@ searchButton.addEventListener('click', () => {
 });
 
 function searchMovies(query) {
-    const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+    const apiUrl = (`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`);
 
     fetch(apiUrl)
         .then(response => response.json())
@@ -25,6 +25,7 @@ function searchMovies(query) {
 
 function displayResults(movies) {
     resultsDiv.innerHTML = '';
+    
 
     if (movies.length === 0) {
         resultsDiv.innerHTML = '<h3>Movie not found!</h3>';
