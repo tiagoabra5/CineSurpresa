@@ -64,3 +64,19 @@ nav a.active {
     transition: 0.5s ease;
 }
 
+.movie {
+    text-align: center;
+    margin-top: 50px;
+    width: 500px;
+    height: 250px;
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-button {
+    margin-right: 210px;
+}

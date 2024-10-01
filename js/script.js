@@ -1,7 +1,3 @@
-function favs() {
-    window.location.href = "favs.html";
-}
-
 const apiKey = '2a6494e2f7409a33fe107b3bca107695';
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
