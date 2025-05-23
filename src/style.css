@@ -10,73 +10,19 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html ::-webkit-scrollbar {
-    width: 7px;
-}
-  
-html ::-webkit-scrollbar-thumb {
-    border-radius: 50px;
-    background: #ff5e00;
-}
-  
-html ::-webkit-scrollbar-track {
-    background: #000000;
-}
-
 body {
-    background-color: black;
+    background-color: #272727;
     color: white;
-}
-
-header{
-    margin-top: 20px;
-    margin-left: 30px;
-    top: 0;
-    left: 0;
-    width: 95%;
-    background-color: transparent;
-    filter: drop-shadow(10px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .logo {
     font-size: 2rem;
-    text-decoration: none;
     color: #ff5e00;
-    margin-left: 2.55rem;
-}
-
-nav a {
-    font-size: 1.3rem;
-    color: white;
-    margin-left: 2rem;
-    font-weight: 500;
-    transition: 0.5s ease;
-    border-bottom: 1px solid transparent;
-}
-
-nav a:hover,
-nav a.active {
-    color: #ff5e00;
-    border-bottom: 1px solid #ff5e00;
-    transition: 0.5s ease;
-}
-
-.movie {
     text-align: center;
-    margin-top: 50px;
-    width: 500px;
-    height: 250px;
 }
 
-#results {
+.films {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.search-button {
-    margin-right: 200px;
 }

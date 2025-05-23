@@ -1,45 +1,59 @@
 const apiKey = '2a6494e2f7409a33fe107b3bca107695';
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
+const randomMovieButton = document.getElementById('randomMovieButton');
 const resultsDiv = document.getElementById('results');
 
-searchButton.addEventListener('click', () => {
-    const searchTerm = searchInput.value;
-    if (searchTerm) {
-        searchMovies(searchTerm);
-    }
+randomMovieButton.addEventListener('click', () => {
+    getRandomMovie();
 });
 
-function searchMovies(query) {
-    const apiUrl = (`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`);
+function getRandomMovie() {
+    const randomPage = Math.floor(Math.random() * 10) + 1;
+    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR&page=${randomPage}`;
 
     fetch(apiUrl)
         .then(response => response.json())
-        .then(data => displayResults(data.results))
-        .catch(error => console.error('Error fetching data:', error));
+        .then(data => {
+            const movies = data.results;
+            if (!movies || movies.length === 0) {
+                resultsDiv.innerHTML = '<h3>Nenhum filme encontrado!</h3>';
+                return;
+            }
+            const randomIndex = Math.floor(Math.random() * movies.length);
+            const randomMovie = movies[randomIndex];
+            displayMovie(randomMovie);
+        })
+        .catch(error => {
+            console.error('Erro ao buscar filme:', error);
+            resultsDiv.innerHTML = '<h3>Erro ao buscar filme.</h3>';
+        });
 }
 
-function displayResults(movies) {
+function displayMovie(movie) {
     resultsDiv.innerHTML = '';
-    
 
-    if (movies.length === 0) {
-        resultsDiv.innerHTML = '<h3>Movie not found!</h3>';
-        return;
+    const movieDiv = document.createElement('div');
+    movieDiv.classList.add('movie');
+
+    const title = document.createElement('h2');
+    title.textContent = movie.title;
+
+    const poster = document.createElement('img');
+    if (movie.poster_path) {
+        poster.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+        poster.alt = `Poster do filme ${movie.title}`;
+    } else {
+        poster.alt = 'Poster não disponível';
     }
+    poster.style.maxWidth = '200px';
+    poster.style.borderRadius = '8px';
+    poster.style.marginBottom = '10px';
 
-    movies.forEach(movie => {
-        const movieDiv = document.createElement('div');
-        movieDiv.classList.add('movie');
+    const overview = document.createElement('p');
+    overview.textContent = movie.overview || 'Sem descrição disponível.';
 
-        const title = document.createElement('h2');
-        title.textContent = movie.title;
+    movieDiv.appendChild(title);
+    movieDiv.appendChild(poster);
+    movieDiv.appendChild(overview);
 
-        const overview = document.createElement('p');
-        overview.textContent = movie.overview;
-
-        movieDiv.appendChild(title);
-        movieDiv.appendChild(overview);
-        resultsDiv.appendChild(movieDiv);
-    });
+    resultsDiv.appendChild(movieDiv);
 }
