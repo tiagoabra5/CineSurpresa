@@ -18,7 +18,8 @@ body {
 .logo {
     font-size: 2rem;
     color: #ff5e00;
-    text-align: center;
+    text-decoration: none;
+    margin-left: 50px;
 }
 
 .films {
