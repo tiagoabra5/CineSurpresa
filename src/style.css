@@ -22,21 +22,6 @@ body {
     margin-left: 50px;
 }
 
-.films {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.movie-card {
-  width: 20rem;
-  min-height: 650px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
 .movie-poster {
   width: 100%;
   height: 450px;
